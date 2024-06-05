@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}"> <!-- https://fontawesome.com/ -->
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <!-- https://fonts.google.com/ -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/templatemo-video-catalog.css' %}">
+</head>
+
+{% if dark_mode %}
+    <body style="background-color: rgb(20, 22, 20);">
+{% else %}
+    <body>
+{% endif %}
+
+    <div class="tm-page-wrap mx-auto">
+        <div class="position-relative">
+            <div class="position-absolute tm-site-header">
+                <div class="container-fluid position-relative">
+                    <div class="row">
+                        <div class="col-7 col-md-4">
+                            <a href="{% url 'videos:home' %}" class="tm-bg-black text-center tm-logo-container">
+                                <i class="fas fa-video tm-site-logo mb-3"></i>
+                                <h1 class="tm-site-name">Video Catalog</h1>
+                            </a>
+                        </div>
+                        <div class="col-5 col-md-8 ml-auto mr-0">
+                            <div class="tm-site-nav">
+                                <nav class="navbar navbar-expand-lg mr-0 ml-auto" id="tm-main-nav">
+                                    <button class="navbar-toggler tm-bg-black py-2 px-3 mr-0 ml-auto collapsed" type="button"
+                                        data-toggle="collapse" data-target="#navbar-nav" aria-controls="navbar-nav"
+                                        aria-expanded="false" aria-label="Toggle navigation">
+                                        <span>
+                                            <i class="fas fa-bars tm-menu-closed-icon"></i>
+                                            <i class="fas fa-times tm-menu-opened-icon"></i>
+                                        </span>
+                                    </button>
+                                    <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
+                                        <ul class="navbar-nav text-uppercase">
+                                            <li class="nav-item active">
+                                                <a class="nav-link tm-nav-link" href="{% url 'videos:home' %}">Videos <span class="sr-only">(current)</span></a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link tm-nav-link" href="{% url 'videos:about' %}">About</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link tm-nav-link" href="{% url 'videos:contact' %}">Contact</a>
+                                            </li>
+                                            {% if request.user.is_authenticated %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="#" style="color: cornflowerblue;">{{ request.user.username }}</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'users:log_out' %}">Log Out ></a>
+                                                </li>
+                                            {% else %}
+                                                <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="{% url 'users:sign_in' %}">Sign In</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="{% url 'users:sign_up' %}">Sign Up</a>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% block header %}
+            {% endblock %}
+        </div>
+        {% for message in messages %}
+            {% if message.tags == "error" %}
+                <div align="center" class="mt-5 mb-5"><h2 style="color: red;">{{ message }}</h2></div>
+            {% elif message.tags == "success" %}
+                <div align="center" class="mt-5 mb-5"><h2 style="color: green;">{{ message }}</h2></div>
+            {% elif message.tags == "info" %}
+                <div align="center" class="mt-5 mb-5"><h2 style="color: blue;">{{ message }}</h2></div>
+            {% endif %}
+        {% endfor %}        
+        <!-- Page contanet -->
+        {% block content %}
+        {% endblock %}
+    </div> <!-- .tm-page-wrap -->
+    {% block script %}
+    {% endblock %}
+</body>
+</html>

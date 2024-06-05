@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} About {% endblock %}
+
+{% block header %}
+<div class="tm-welcome-container tm-fixed-header tm-fixed-header-2">
+    <div class="text-center">
+        <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">Another Image BG<br>it can be fixed.<br>Content will simply slide over.</p>                	
+    </div>                
+</div>
+
+<div id="tm-fixed-header-bg"></div> <!-- Header image -->
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid px-0">
+        <div class="mx-auto tm-content-container">					
+            <div class="row mt-3 mb-5 pb-3">
+                <div class="col-12">
+                    <div class="mx-auto tm-about-text-container px-3">
+                        <h2 class="tm-page-title mb-4 tm-text-primary">About the Video Catalog</h2>
+                        <p class="mb-4">Video Catalog is free HTML CSS template for your website. This Bootstrap v4.4.1 website template is 100% free download for everyone. You can modify and expand this template for your CMS websites. You can use it for commercial or non-commercial work. If you wish to support <a href="https://templatemo.com" class="tm-text-primary">TemplateMo</a>, please contact us.</p>
+                        <p class="mb-4">You are <u>not allowed</u> to re-distribute the template ZIP file on any template collection website.</p>
+                        <p class="mb-4">Vivamus sit amet justo sed erat iaculis consequat. Nulla suscipit posuere lectus ut venenatis. Proin sed orci eget tellus euismod vulputate eu eu arcu. Etiam a bibendum lorem. Curabitur ac bibendum odio. Vivamus euismod dui mauris, ut tincidunt mi congue quis.</p>
+                        <p class="mb-0">Phasellus luctus orci dolor, a luctus massa tincidunt vitae. Integer sit amet odio id libero tincidunt dignissim in eget arcu. Aliquam tristique ut magna sit amet tincidunt. Sed tempor tellus nulla, molestie luctus lectus tincidunt id. Cras duismod leo a urna placerat, vel blandit turpis fermentum.</p>	
+                    </div>							
+                </div>						
+            </div>					
+        </div>
+
+        <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/about-2.jpg' %}"></div>
+
+        <div class="mx-auto tm-content-container mt-4 px-3">
+            <div class="row tm-catalog-item-list mb-4">
+                {% include 'includes/about_page_items.html' %}
+            </div>
+        </div>
+
+        <div class="parallax-window" data-parallax="scroll" data-image-src="{% static 'img/about-3.jpg' %}"></div>
+    </div>
+</main>
+<div class="container-fluid tm-content-container mx-auto pt-5">
+    <!-- Subscribe form and footer links -->
+    <div class="row mt-5 pt-3">
+        {% include 'includes/subscribers.html' %}
+    </div> <!-- row -->
+
+    <footer class="row pt-5">
+        <div class="col-12">
+            <p class="text-right">Copyright 2020 The Video Catalog Company 
+                
+                - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo</a></p>
+        </div>
+    </footer>
+</div>		
+{% block script %}
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+{% endblock %}
+{% endblock %}

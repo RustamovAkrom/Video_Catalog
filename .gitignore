@@ -1,0 +1,6 @@
+__pycache__/
+.idea/
+media/
+video_catalog/
+.env
+db.sqlite3

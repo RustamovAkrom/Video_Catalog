@@ -1,0 +1,7 @@
+{% for message in messages %}
+    {% if message.tags == error %}
+        <div align="center" style="color: red;"><h2>{{ message }}</h2></div>
+    {% elif message.tags == success %}
+        <div align="center" style="color: red;"><h2>{{ message }}</h2></div>
+    {% endif %}
+{% endfor %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Sign Up {% endblock %}
+
+{% block header %}
+<div class="tm-welcome-container tm-fixed-header tm-fixed-header-1">
+    <div class="text-center">
+        <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">
+            Talk to Us<br>about any question you have
+        </p>                	
+    </div>                
+</div>
+<div id="tm-fixed-header-bg"></div> <!-- Header image -->
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="container-fluid px-0">
+        <div class="mx-auto tm-content-container">					
+            <div class="row mt-3 mb-5 pb-3">
+                <div class="col-12">
+                    <div class="mx-auto tm-about-text-container px-3">
+                        <h2 class="tm-page-title mb-4 tm-text-primary">
+                            <div align="center">Registration in VideoCatalog</div>
+                        </h2>
+                        <p class="mb-4">Video Catalog is a free website template for your business. This is 100% free Bootstrap v4.4.1 layout. You can modify and adapt this template for your CMS websites. You can use it for commercial or non-commercial work. If you wish to suport <a rel="nofollow" target="_parent" href="https://templatemo.com" class="tm-text-primary">TemplateMo</a>, please contact us.</p>
+                    </div>							
+                </div>						
+            </div>
+
+            {% include 'includes/sign_up_form.html' %}                       			
+        </div>
+
+        <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="{% static 'img/register-1.jpg' %}"></div>
+
+    </div>
+</main>
+
+<div class="container-fluid tm-content-container mx-auto pt-4">
+    <!-- Subscribe form and footer links -->
+    <div class="row pt-3">
+        {% include 'includes/subscribers.html' %}
+    </div> <!-- row -->
+
+    <footer class="row pt-5">
+        <div class="col-12">
+            <p class="text-right">Copyright 2020 The Video Catalog Company 
+                
+                - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo</a></p>
+        </div>
+    </footer>
+</div>		
+{% block script %}
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,65 @@
+<div class="mx-auto pb-3 tm-about-text-container px-3">
+    <div class="row">
+        <div class="col-lg-6 mb-5">
+
+            <form id="contact-form" action="" method="POST" class="tm-contact-form">
+
+              <div class="form-group">
+                {% if dark_mode %}
+                  <input type="text" name="name" class="form-control rounded-0" placeholder="Name" required="" style="background-color: rgb(10, 10, 10);"/>
+                {% else %}
+                  <input type="text" name="name" class="form-control rounded-0" placeholder="Name" required="" />
+                {% endif %}
+            </div>
+
+              <div class="form-group">
+                {% if dark_mode %}
+                    <input type="email" name="email" class="form-control rounded-0" placeholder="Email" required="" style="background-color: rgb(10, 10, 10);"/>
+                {% else %}
+                    <input type="email" name="email" class="form-control rounded-0" placeholder="Email" required="" />
+                {% endif %}
+              </div>
+
+              <div class="form-group">
+
+                {% if dark_mode %}
+                    <select class="form-control" id="contact-select" name="inquiry" style="background-color: rgb(10, 10, 10);">
+                {% else %}
+                    <select class="form-control" id="contact-select" name="inquiry">
+                {% endif %}
+
+                  <option value="-">Subject</option>
+                  <option value="sales">Sales &amp; Marketing</option>
+                  <option value="creative">Creative Design</option>
+                  <option value="uiux">UI / UX</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                {% if dark_mode %}
+                    <textarea rows="8" name="message" class="form-control rounded-0" placeholder="Message"
+                          required="" style="background-color: rgb(10, 10, 10);"></textarea>
+                {% else %}
+                    <textarea rows="8" name="message" class="form-control rounded-0" placeholder="Message"
+                          required=""></textarea>
+                {% endif %}
+              </div>
+
+              <div class="form-group mb-0">
+                <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"><span>Submit</span></button>
+              </div>
+            </form>    
+            
+        </div>
+        <div class="col-lg-6">
+            <div class="mapouter mb-60">
+                <div class="gmap_canvas">
+                    <iframe width="100%" height="520" id="gmap_canvas"
+                        src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>        
+       

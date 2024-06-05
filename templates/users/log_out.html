@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Log Out {% endblock %}
+
+{% block header %}
+<div class="tm-welcome-container tm-fixed-header tm-fixed-header-3">
+    <div class="text-center">
+        <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">
+            Talk to Us<br>about any question you have
+        </p>                	
+    </div>                
+</div>
+<div id="tm-fixed-header-bg"></div> Header image
+
+{% endblock %}
+
+{% block content %}
+
+{% if dark_mode %}
+    <main style="color: rgb(10, 15, 10);">
+{% else %}
+    <main>
+{% endif %}
+    <div class="container-fluid px-0">
+        <div class="mx-auto tm-content-container">					
+            <div class="row mt-3 mb-5 pb-3">
+                <div class="col-12">
+                    <div class="mx-auto tm-about-text-container px-3">
+                        <p><div align="center">
+                            <h1 style="color: black;"><b style="color: antiquewhite;">You are Log Out ?</b></h1>
+                        </div></p>
+                        <div align="center">
+                            <form method="post">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-danger mt-5 mb-5" value="Yes">
+                                <a href="" class="btn btn-primary mt-5 mb-5">No</a>
+                            </form>
+                        </div>
+                    </div>							
+                </div>						
+            </div>
+        </div>
+        <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="{% static 'img/logout-1.jpg' %}"></div>
+
+    </div>
+</main>
+
+<div class="container-fluid tm-content-container mx-auto pt-4">
+    <!-- Subscribe form and footer links -->
+    <div class="row pt-3">
+        {% include 'includes/subscribers.html' %}
+    </div> <!-- row -->
+
+    <footer class="row pt-5">
+        <div class="col-12">
+            <p class="text-right">Copyright 2020 The Video Catalog Company 
+                
+                - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo</a></p>
+        </div>
+    </footer>
+</div>		
+{% block script %}
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+{% endblock %}
+{% endblock %}
