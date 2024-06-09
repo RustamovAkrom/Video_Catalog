@@ -33,11 +33,10 @@
                     <div class="tm-categories-container mb-5">
                         <h3 class="tm-text-primary tm-categories-text"><b>Categories:</b></h3>
                         <ul class="nav tm-category-list">
-                            <li class="nav-item tm-category-item"><a href="#" class="nav-link tm-category-link active"><b>All</b></a></li>
-                            <li class="nav-item tm-category-item"><a href="#" class="nav-link tm-category-link"><b>Drone Shots</b></a></li>
-                            <li class="nav-item tm-category-item"><a href="#" class="nav-link tm-category-link"><b>Nature</b></a></li>
-                            <li class="nav-item tm-category-item"><a href="#" class="nav-link tm-category-link"><b>Actions</b></a></li>
-                            <li class="nav-item tm-category-item"><a href="#" class="nav-link tm-category-link"><b>Featured</b></a></li>
+                            <li class="nav-item tm-category-item"><a href="?category=all" class="nav-link tm-category-link"><b>All</b></a></li>
+                            {% for category in categories %}
+                                <li class="nav-item tm-category-item"><a href="?category={{ category }}" class="nav-link tm-category-link"><b>{{ category }}</b></a></li>
+                            {% endfor %}
                         </ul>
                     </div>        
                 </div>

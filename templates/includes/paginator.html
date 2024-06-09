@@ -1,11 +1,17 @@
 <div>
     {% if dark_mode %}
         <ul class="nav tm-paging-links">
-            <li class="nav-item active"><a href="#" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">1</a></li>
-            <li class="nav-item"><a href="#" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">2</a></li>
-            <li class="nav-item"><a href="#" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">3</a></li>
-            <li class="nav-item"><a href="#" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">4</a></li>
-            <li class="nav-item"><a href="#" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">></a></li>
+            {% if page_obj.has_previous %}
+                <li class="nav-item active"><a href="?page={{ page_obj.previous_page_number }}" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);"><</a></li>
+                <li class="nav-item"><a href="?page={{ page_obj.previous_page_number }}" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">{{ page_obj.previous_page_number }}</a></li>
+            {% endif %}
+
+            <li class="nav-item"><a href="?page={{ page_obj.number }}" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">{{ page_obj.number }}</a></li>
+
+            {% if page_obj.has_next %}
+                <li class="nav-item"><a href="?page={{ page_obj.next_page_number }}" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">{{ page_obj.next_page_number }}</a></li>
+                <li class="nav-item"><a href="?page={{ page_obj.next_page_number }}" class="nav-link tm-paging-link" style="background-color: rgb(10, 10, 10);">></a></li>
+            {% endif %}
         </ul>
     {% else %}
         <ul class="nav tm-paging-links">

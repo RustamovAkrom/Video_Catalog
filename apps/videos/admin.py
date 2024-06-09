@@ -20,4 +20,3 @@ class VideoLikesAdmin(admin.ModelAdmin):
 @admin.register(SubscribersEmail)
 class SubscribersEmailAdmin(admin.ModelAdmin):
     pass
-

@@ -6,6 +6,7 @@ from .models import User, UserProfile
 class UserAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     pass

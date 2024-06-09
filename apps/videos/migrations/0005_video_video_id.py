@@ -7,13 +7,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('videos', '0004_subscribersemail'),
+        ("videos", "0004_subscribersemail"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='video',
-            name='video_id',
-            field=models.CharField(default=uuid.UUID('c4f21101-9d85-4dd4-8eda-9de0c42e4485'), max_length=180),
+            model_name="video",
+            name="video_id",
+            field=models.CharField(
+                default=uuid.UUID("c4f21101-9d85-4dd4-8eda-9de0c42e4485"),
+                max_length=180,
+            ),
         ),
     ]

@@ -53,10 +53,10 @@
                                             </li>
                                             {% if request.user.is_authenticated %}
                                                 <li class="nav-item">
-                                                    <a class="nav-link tm-nav-link" href="#" style="color: cornflowerblue;">{{ request.user.username }}</a>
+                                                    <a class="nav-link tm-nav-link" href="{% url 'users:profile' request.user.username %}" style="color: cornflowerblue;">{{ request.user.username }}</a>
                                                 </li>
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'users:log_out' %}">Log Out ></a>
+                                                    <a class="nav-link tm-nav-link" href="{% url 'users:log_out' %}">Log Out ></a>
                                                 </li>
                                             {% else %}
                                                 <li class="nav-item">

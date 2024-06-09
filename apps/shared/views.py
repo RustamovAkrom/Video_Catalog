@@ -4,6 +4,7 @@ from django.views import View
 
 from _config_ import settings
 
+
 class BaseSharedView(View):
     # Base pages configurations
 
@@ -11,6 +12,6 @@ class BaseSharedView(View):
 
         self.context = {}
         # Web Dark Mode activator
-        self.context['dark_mode'] = settings.DARK_MODE
+        self.context["dark_mode"] = settings.DARK_MODE
 
         super().__init__(**kwargs)

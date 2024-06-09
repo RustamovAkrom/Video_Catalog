@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ user_profile.first_name}} {{ user_profile.last_name }} {% endblock %}
+
+{% block header %}
+<div class="tm-welcome-container tm-fixed-header tm-fixed-header-3">
+    <div class="text-center">
+        <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">
+            Talk to Us<br>about any question you have
+        </p>                	
+    </div>                
+</div>
+<div id="tm-fixed-header-bg"></div>
+{% endblock %}
+
+{% block content %}
+<main> 
+    <div class="container-fluid px-0">
+        
+        <div class="mx-auto tm-content-container mt-4 px-3 mb-3">
+
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="tm-page-title mb-5 tm-text-primary">{{ user_profile.first_name }} {{ user_profile.last_name }}</h2>    
+                </div>                        
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 mb-5 pt-3">
+                    <div class="media tm-testimonial">
+                        <a href="{{ user_profile.avatar.url }}">
+                            <img class="mr-4 rounded-circle img-fluid" src="{{ user_profile.avatar.url }}" alt="{{ user_profile.avatar.url }}">
+                        </a>
+                        <p class="media-body pt-3 tm-testimonial-text">
+                            {% if user_profile.bio %}
+                                {{ user_profile.bio }}
+                            {% else %}
+                                it is your bio...
+                            {% endif %}
+                        </p>     
+                    </div>              
+                </div>
+            </div>
+        </div>
+        {% include 'includes/profile_page_form.html' %}                       			                   
+
+        <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="{% static 'img/contact-2.jpg' %}"></div>
+
+    </div>
+</main>
+
+<div class="container-fluid tm-content-container mx-auto pt-4">
+    <!-- Subscribe form and footer links -->
+    <div class="row pt-3">
+        {% include 'includes/subscribers.html' %}
+    </div> <!-- row -->
+
+    <footer class="row pt-5">
+        <div class="col-12">
+            <p class="text-right">Copyright 2020 The Video Catalog Company 
+                
+                - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo</a></p>
+        </div>
+    </footer>
+</div>		
+{% block script %}
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+{% endblock %}
+{% endblock %}

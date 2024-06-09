@@ -8,23 +8,31 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('videos', '0008_video_description_alter_video_video_id'),
+        ("videos", "0008_video_description_alter_video_video_id"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='video',
-            name='category',
+            model_name="video",
+            name="category",
         ),
         migrations.AlterField(
-            model_name='video',
-            name='video_id',
-            field=models.CharField(default=uuid.UUID('329827e4-fb29-4fb7-9d91-e8b4bd28753c'), max_length=180),
+            model_name="video",
+            name="video_id",
+            field=models.CharField(
+                default=uuid.UUID("329827e4-fb29-4fb7-9d91-e8b4bd28753c"),
+                max_length=180,
+            ),
         ),
         migrations.AddField(
-            model_name='video',
-            name='category',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='video_categories', to='videos.categories'),
+            model_name="video",
+            name="category",
+            field=models.ForeignKey(
+                default=1,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="video_categories",
+                to="videos.categories",
+            ),
             preserve_default=False,
         ),
     ]

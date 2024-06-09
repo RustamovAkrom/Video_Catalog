@@ -1,0 +1,40 @@
+<div class="mx-auto pb-3 tm-about-text-container px-3">
+    <div class="row">
+        <div class="col-lg-6 mb-5">
+
+            <form id="contact-form" action="" method="POST" class="tm-contact-form" enctype="multipart/form-data">
+                {% csrf_token %}
+                Bio:
+                <div class="form-group">
+                    {{ form.bio }}
+                </div>
+                First name:
+                <div class="form-group">
+                    {{ form.first_name }}
+                </div>
+                Last name:
+                <div class="form-group">
+                    {{ form.last_name }}
+                </div>
+                Username:
+                <div class="form-group">
+                    {{ form.username }}
+                </div>
+                Email
+                <div class="form-group">
+                    {{ form.email }}
+                </div>
+                
+                <b style="color: white;">Update Avatar</b>
+                        
+                    {{ form.avatar }}
+                
+                <div class="form-group mb-0">
+                    <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-submit"><span>Update</span></button>
+                </div>
+            </form>    
+            
+        </div>
+    </div>  
+</div>        
+       

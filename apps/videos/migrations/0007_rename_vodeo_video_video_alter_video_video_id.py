@@ -7,18 +7,21 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('videos', '0006_alter_video_photo_alter_video_video_id'),
+        ("videos", "0006_alter_video_photo_alter_video_video_id"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='video',
-            old_name='vodeo',
-            new_name='video',
+            model_name="video",
+            old_name="vodeo",
+            new_name="video",
         ),
         migrations.AlterField(
-            model_name='video',
-            name='video_id',
-            field=models.CharField(default=uuid.UUID('3cba5dd9-e607-4422-8210-351613200c05'), max_length=180),
+            model_name="video",
+            name="video_id",
+            field=models.CharField(
+                default=uuid.UUID("3cba5dd9-e607-4422-8210-351613200c05"),
+                max_length=180,
+            ),
         ),
     ]
