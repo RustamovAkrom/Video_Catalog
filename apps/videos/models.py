@@ -1,6 +1,6 @@
 from django.db import models
 from apps.shared.models import AbstractBaseModel
-from apps.users.models import UserProfile
+from apps.users.models import User
 from uuid import uuid4
 
 
@@ -16,7 +16,7 @@ class Video(AbstractBaseModel):
     title = models.CharField(max_length=80)
     photo = models.ImageField(upload_to="photos/%Y/%M/%D/")
     video = models.FileField(upload_to="videos/%Y/%M/%D/")
-    author = models.ForeignKey(UserProfile, models.CASCADE, related_name="video_author")
+    author = models.ForeignKey(User, models.CASCADE, related_name="video_author")
     description = models.CharField(max_length=100)
     content = models.TextField()
     category = models.ForeignKey(
@@ -38,7 +38,7 @@ class Video(AbstractBaseModel):
 
 class VideoLike(AbstractBaseModel):
     users = models.ForeignKey(
-        UserProfile, models.DO_NOTHING, related_name="video_likes"
+        User, models.DO_NOTHING, related_name="video_likes"
     )
     videos = models.ForeignKey(Video, models.CASCADE, related_name="video_likes")
 

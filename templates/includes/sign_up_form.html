@@ -10,6 +10,13 @@
                     {{ form.last_name }}
             </div>
             <div class="form-group">
+
+                {% if dark_mode %}
+                    <b style="color: rgb(10, 15, 10);">Unique</b>
+                {% else %}
+                    <b class="tm-text-primary">Unique</b>
+                {% endif %}
+
                     {{ form.username }}
                 </div>
             <div class="form-group">

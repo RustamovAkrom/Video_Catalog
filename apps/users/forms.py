@@ -211,65 +211,166 @@ class UserSignInForm(forms.Form):
 
 
 class UserProfileForm(forms.ModelForm):
-    bio = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "type": "text",
-                "name": "bio",
-                "class": "form-control rounded-0",
-                "placeholder": "Bio...",
-                "required": "",
-            }
+    if settings.DARK_MODE:
+        bio = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "bio",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Bio...",
+                    "style": "background-color: rgb(10, 10, 10);",
+                }
+            ),
+            required=False
         )
-    )
-    first_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "type": "text",
-                "name": "first_name",
-                "class": "form-control rounded-0",
-                "placeholder": "First Name...",
-                "required": "",
-            }
+        first_name = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "first_name",
+                    "class": "form-control rounded-0",
+                    "placeholder": "First Name...",
+                    "required": "",
+                    "style": "background-color: rgb(10, 10, 10);",
+                }
+            )
         )
-    )
-    last_name = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "type": "text",
-                "name": "last_name",
-                "class": "form-control rounded-0",
-                "placeholder": "Last Name...",
-                "required": "",
-            }
+        last_name = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "last_name",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Last Name...",
+                    "required": "",
+                    "style": "background-color: rgb(10, 10, 10);",
+                }
+            )
         )
-    )
-    username = forms.CharField(
-        widget=forms.TextInput(
-            attrs={
-                "type": "text",
-                "name": "username",
-                "class": "form-control rounded-0",
-                "placeholder": "Username...",
-                "required": "",
-            }
+        email = forms.EmailField(
+            widget=forms.EmailInput(
+                attrs={
+                    "type": "email",
+                    "name": "email",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Email...",
+                    "required": "",
+                    "style": "background-color: rgb(10, 10, 10);",
+                }
+            )
         )
-    )
-    email = forms.EmailField(
-        widget=forms.EmailInput(
-            attrs={
-                "type": "email",
-                "name": "email",
-                "class": "form-control rounded-0",
-                "placeholder": "Email...",
-                "required": "",
-            }
+        avatar = forms.FileField(
+            widget=forms.FileInput(
+                attrs={"type": "file", "name": "avatar", "class": ""}
+            ),
+            required=False
         )
-    )
-    avatar = forms.FileField(
-        widget=forms.FileInput(attrs={"type": "file", "name": "avatar", "class": ""})
-    )
+
+    else:
+        bio = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "bio",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Bio...",
+                }
+            ),
+            required=False
+        )
+        first_name = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "first_name",
+                    "class": "form-control rounded-0",
+                    "placeholder": "First Name...",
+                    "required": "",
+                }
+            )
+        )
+        last_name = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "last_name",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Last Name...",
+                    "required": "",
+                }
+            )
+        )
+        email = forms.EmailField(
+            widget=forms.EmailInput(
+                attrs={
+                    "type": "email",
+                    "name": "email",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Email...",
+                    "required": "",
+                }
+            )
+        )
+        avatar = forms.FileField(
+            widget=forms.FileInput(
+                attrs={"type": "file", "name": "avatar", "class": ""}
+            ),
+            required=False
+        )
 
     class Meta:
         model = UserProfile
-        fields = ["bio", "first_name", "last_name", "username", "email", "avatar"]
+        fields = ["bio", "first_name", "last_name", "email", "avatar"]
+
+
+# class UserUrlForm(forms.Form):
+#     if settings.DARK_MODE:
+#         url = forms.URLField(
+#             widget=forms.TextInput(
+#                 attrs={
+#                     "type": "url",
+#                     "name": "url",
+#                     "class": "form-control rounded-0",
+#                     "placeholder": "Url...",
+#                     "required": "",
+#                     "style": "background-color: rgb(10, 10, 10);",
+#                 }
+#             )
+#         )
+#         description = forms.URLField(
+#             widget=forms.TextInput(
+#                 attrs={
+#                     "type": "text",
+#                     "name": "description",
+#                     "class": "form-control rounded-0",
+#                     "placeholder": "Description...",
+#                     "style": "background-color: rgb(10, 10, 10);",
+#                 }
+#             ),
+#             required=False
+#         )
+
+#     else:
+#         url = forms.URLField(
+#             widget=forms.TextInput(
+#                 attrs={
+#                     "type": "url",
+#                     "name": "url",
+#                     "class": "form-control rounded-0",
+#                     "placeholder": "Url...",
+#                     "required": ""
+#                 }
+#             )
+#         )
+#         description = forms.URLField(
+#                     widget=forms.TextInput(
+#                         attrs={
+#                             "type": "text",
+#                             "name": "description",
+#                             "class": "form-control rounded-0",
+#                             "placeholder": "Description...",
+#                         }
+#                     )
+#                 )
+        

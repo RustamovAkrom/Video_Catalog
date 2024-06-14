@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Video Catalog {% endblock %}
+
+{% block content %}
+<div class="text-center mt-4"> 
+    <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="{{ user_profile.avatar.url }}">
+    <div class="tm-welcome-container">
+        <div class="text-center">
+            {% if dark_mode %}
+                <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-white mx-auto">
+                    {{ user_profile.bio }}
+                </p>      
+            {% else %}          	
+                <p class="pt-5 px-3 tm-welcome-text tm-welcome-text-2 mb-1 mt-lg-0 mt-5 text-dark mx-auto">
+                    {{ user_profile.bio }}
+                </p>                	
+            {% endif %}
+
+            {% for url in user_urls %}
+                <p>{{ url }}</p>
+            {% endfor %}
+
+        </div>                
+    </div>
+</div>
+</div>
+
+
+<div class="container-fluid">
+    <div id="content" class="mx-auto tm-content-container">
+        <main>
+            <img src="{{ user_profile.avatar.url }}" alt="" width="200" height="200" style="border-radius: 50%;">
+
+            <div class="row">
+                <div class="col-12">
+                    <span>
+                        <h2 class="tm-page-title mb-4 mt-5"><b><b>{{ user_profile.first_name }} {{ user_profile.last_name }}</b></b></h2>
+                        </span>      
+                    </div>
+                </div>
+            
+            <div class="row tm-catalog-item-list">
+                {% for video in videos %}
+                    <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
+                        <div class="position-relative tm-thumbnail-container">
+                            <img src="{{ video.photo.url }}" alt="Image" width="500" height="300">    
+                            <a href="{% url 'videos:video-detail' video.video_id %}" class="position-absolute tm-img-overlay">
+                                <i class="fas fa-play tm-overlay-icon"></i>
+                            </a>
+                        </div>   
+                        
+                        {% if dark_mode %}
+                            <div class="p-4 tm-bg-gray tm-catalog-item-description" style="background-color: rgb(10, 10, 10)">
+                        {% else %}
+                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
+                        {% endif %}
+                            <h3 class="tm-text-primary mb-3 tm-catalog-item-title">{{ video.title }}</h3>
+                            <div>
+                                {{ video.created_at.date }}
+                                <span class="ml-5">
+                                    <span class="ml-5">
+                                        <span class="ml-5">
+                                            {{ video.created_at.time }}
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    {% if request.user.is_authenticated %}
+                        {% if request.user.user_id == user_profile.user.user_id %}
+                        <div class="container mt-5 mb-5">
+                            <h1><b><b>Sizning videolariz hozircha mavjud emas!</b></b></h1>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <div class="container mt-5 mb-5">
+                            <h1><b><b>Videolar topilmadi</b></b></h1>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+            <!-- Catalog Paging Buttons -->
+            {% include 'includes/paginator.html' %}
+        </main>
+        <!-- Subscribe form and footer links -->
+        <div class="row mt-5 pt-3">
+            {% include 'includes/subscribers.html' %}
+        </div>
+        <footer class="row pt-5">
+            <div class="col-12">
+                <p class="text-right">Copyright 2020 The Video Catalog Company 
+                
+                - Designed by <a href="https://templatemo.com" rel="nofollow" target="_parent">TemplateMo</a></p>
+            </div>
+        </footer>
+    </div> <!-- tm-content-container -->
+</div>
+{% block script %}
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/parallax.min.js' %}"></script>
+{% endblock %}
+{% endblock %}

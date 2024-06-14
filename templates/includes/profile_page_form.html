@@ -2,30 +2,54 @@
     <div class="row">
         <div class="col-lg-6 mb-5">
 
-            <form id="contact-form" action="" method="POST" class="tm-contact-form" enctype="multipart/form-data">
+            <form id="contact-form" action="{% url 'users:profile' user_profile.user.user_id %}" method="POST" class="tm-contact-form" enctype="multipart/form-data">
                 {% csrf_token %}
-                Bio:
+
+                {% if dark_mode %}
+                    <b style="color: white;">Bio:</b>
+                {% else %}
+                    <b class="tm-text-primary">Bio:</b>
+                {% endif %}
+
                 <div class="form-group">
                     {{ form.bio }}
                 </div>
-                First name:
+
+                {% if dark_mode %}
+                    <b style="color: white;">First Name:</b>
+                {% else %}
+                    <b class="tm-text-primary">First Name:</b>
+                {% endif %}
+
                 <div class="form-group">
-                    {{ form.first_name }}
+                  {{ form.first_name }}
                 </div>
-                Last name:
+
+                {% if dark_mode %}
+                    <b style="color: white;">Last Name:</b>
+                {% else %}
+                    <b class="tm-text-primary">Last Name:</b>
+                {% endif %}
+
                 <div class="form-group">
                     {{ form.last_name }}
                 </div>
-                Username:
-                <div class="form-group">
-                    {{ form.username }}
-                </div>
-                Email
+
+                {% if dark_mode %}
+                    <b style="color: white;">Email:</b>
+                {% else %}
+                    <b class="tm-text-primary">Email:</b>
+                {% endif %}
+
                 <div class="form-group">
                     {{ form.email }}
                 </div>
                 
-                <b style="color: white;">Update Avatar</b>
+                {% if dark_mode %}
+                    <b style="color: white;">Update Avatar</b>
+                {% else %}
+                    <b class="tm-text-primary">Update Avatar</b>
+                {% endif %}
                         
                     {{ form.avatar }}
                 
@@ -33,7 +57,24 @@
                     <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-submit"><span>Update</span></button>
                 </div>
             </form>    
-            
+        </div>
+        <div class="col-lg-6">
+            <div class="mapouter mb-60">
+                <div class="gmap_canvas">
+                    <!-- <iframe width="100%" height="520" id="gmap_canvas"
+                        src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe> -->
+                    <h2 class="text-center tm-text-primary">{{ user_profile.first_name }} {{ user_profile.last_name }}</h2>   
+                    <div class="text-center">
+                        <a href="{{ user_profile.avatar.url }}">
+                            <img src="{{ user_profile.avatar.url }}" alt="{{ user_profile.avatar.url }}" width="200" height="200" style="border-radius: 50%;" class="mr-5 mt-3">
+                        </a>
+                        <div class="mr-4">
+                            <h3 class="mr-5 mt-5 ml-5 mb-5"><a href="{% url 'users:author-profile' request.user.user_id %}" class="btn btn-info tm-btn-submit ml-auto">Your Profile</a></h3>                
+                        </div>
+                    </div>     
+                </div>
+            </div>
         </div>
     </div>  
 </div>        

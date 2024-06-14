@@ -6,14 +6,25 @@ from django.contrib import messages
 from django.urls import reverse
 
 from apps.shared.views import BaseSharedView
-from .models import UserProfile
+from apps.videos.models import Video
+from .models import UserProfile, User
 from .forms import UserSignUpForm, UserSignInForm, UserProfileForm
+
+from apps.shared.services import subscriber_email_service
 
 
 class UserSignUpView(BaseSharedView):
     # Registration
     def get(self, request):
+
+        # html parse get
+        subscriber_email = request.GET.get("email", None)
+
+        # subscribers
+        subscriber_email_service(request, subscriber_email, "users:sign_up")
+
         self.context["form"] = UserSignUpForm()
+
         return render(request, "users/sign_up.html", self.context)
 
     def post(self, request):
@@ -52,6 +63,13 @@ class UserSignUpView(BaseSharedView):
 class UserSignInView(BaseSharedView):
     # Authorization
     def get(self, request):
+
+        # html parse get
+        subscriber_email = request.GET.get("email", None)
+
+        # subscribers
+        subscriber_email_service(request, subscriber_email, "users:sign_up")
+
         form = UserSignInForm()
         self.context["form"] = form
         return render(request, "users/sign_in.html", self.context)
@@ -81,6 +99,13 @@ class UserSignInView(BaseSharedView):
 class UserLogOutView(BaseSharedView):
     # Logout
     def get(self, request):
+
+        # html parse get
+        subscriber_email = request.GET.get("email", None)
+
+        # subscribers
+        subscriber_email_service(request, subscriber_email, "users:sign_up")
+
         return render(request, "users/log_out.html", self.context)
 
     def post(self, request):
@@ -90,28 +115,83 @@ class UserLogOutView(BaseSharedView):
 
 class UserProfileView(LoginRequiredMixin, BaseSharedView):
     # User Profile page
-    def get(self, request, username):
+    def get(self, request, user_id):
 
-        user_profile = UserProfile.objects.get(username=username)
-        form = UserProfileForm(instance=user_profile)
+        # html parse get
+        subscriber_email = request.GET.get("email", None)
+
+        # subscribers
+        subscriber_email_service(
+            request,
+            subscriber_email,
+            reverse("users:profile", kwargs={"user_id": user_id}),
+        )
+        user = User.objects.get(user_id = user_id)
+        user_profile = UserProfile.objects.get(user = user)
+        form = UserProfileForm(instance=user)
 
         self.context["user_profile"] = user_profile
         self.context["form"] = form
 
         return render(request, "users/profile.html", self.context)
 
-    def post(self, request, username):
+    def post(self, request, user_id):
 
-        user_profile = UserProfile.objects.get(username=username)
+        user = User.objects.get(user_id=user_id)
+        user_profile = UserProfile.objects.get(user = user)
+
         form = UserProfileForm(
             data=request.POST, files=request.FILES, instance=user_profile
         )
-        print(form.data)
+
         if form.is_valid():
             form.save()
             messages.success(request, "You successfully updated Profile")
-            return redirect(reverse("users:profile", kwargs={"username": username}))
+            return redirect(reverse("users:profile", kwargs={"user_id": user_id}))
 
         else:
             messages.error(request, "You unsuccessfully updated your profile.")
-            return redirect(reverse("users:profile", kwargs={"username": username}))
+            return redirect(reverse("users:profile", kwargs={"user_id": user_id}))
+
+
+# class UserProfileUrlAdd(BaseSharedView):
+
+#     def post(self, request, user_id):
+#         form = UserUrlForm(request.POST)
+
+#         user = UserProfile.objects.get(user = request.user)
+#         url = form.data.get("url")
+#         description = form.data.get("description")
+        
+#         UserUrls.objects.create(user = user, url = url, description = description)
+
+#         messages.success(request, "Successfully added url in your profile")
+#         return redirect(reverse("users:profile", kwargs={"user_id": user_id}))
+    
+
+class AuthorProfileView(BaseSharedView):
+
+    def get(self, request, author_id):
+
+        # html parse get
+        subscriber_email = request.GET.get("email", None)
+
+        # subscribers
+        subscriber_email_service(
+            request,
+            subscriber_email,
+            reverse("users:author-profile", kwargs={"author_id": author_id}),
+        )
+
+        user = User.objects.get(user_id=author_id)
+        user_profile = UserProfile.objects.get(user=user)
+
+        videos = Video.objects.filter(author=user)
+
+        self.context["videos"] = videos
+        self.context["user_profile"] = user_profile
+
+        return render(request, "users/author-profile.html", self.context)
+
+    def post(self, request, author_id):
+        return render(request, "users/author-profile", self.context)

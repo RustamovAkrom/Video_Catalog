@@ -12,6 +12,22 @@ def remove_from_invertory(sender, instance, created, **kwargs):
             user=instance,
             first_name=instance.first_name,
             last_name=instance.last_name,
-            username=instance.username,
-            email=instance.email,
+            email=instance.email
+        )
+    else:
+        UserProfile.objects.update(
+            user=instance,
+            first_name=instance.first_name,
+            last_name=instance.last_name,
+            email=instance.email
+        )
+        
+
+@receiver(post_save, sender=UserProfile)
+def remove_from_invertory_user_profile(sender, instance, created, **kwargs):
+    if not created:
+        User.objects.update(
+            first_name = instance.first_name,
+            last_name = instance.last_name,
+            email = instance.email
         )

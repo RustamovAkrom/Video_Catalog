@@ -12,14 +12,14 @@ class User(AbstractUser):
     def __str__(self) -> str:
         return self.username
 
+    
 
 class UserProfile(AbstractBaseModel):
     user = models.OneToOneField(User, models.CASCADE, related_name="user_profile")
-    bio = models.CharField(max_length=100, blank=True, null=True)
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    username = models.CharField(max_length=150)
+    first_name = models.CharField(max_length=150)      
+    last_name = models.CharField(max_length=150)  
     email = models.EmailField()
+    bio = models.CharField(max_length=100, blank=True, null=True)
     avatar = models.ImageField(
         upload_to="users/avatar/",
         blank=True,

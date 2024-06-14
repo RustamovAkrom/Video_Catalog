@@ -1,0 +1,35 @@
+<div class="mx-auto pb-3 tm-about-text-container px-3">
+    <div class="row">
+        <div class="col-lg-6 mb-5">
+            <h3 class="tm-text-primary mb-5">Add url on profile</h3>               			                   
+
+            <form id="contact-form" action="{% url 'users:profile-url-add' user_profile.user.user_id %}" method="POST" class="tm-contact-form">
+                {% csrf_token %}
+
+                {% if dark_mode %}
+                    <b style="color: white;">URL:</b>
+                {% else %}
+                    <b class="tm-text-primary">URL:</b>
+                {% endif %}
+
+                <div class="form-group">
+                    {{ form_url.url }}
+                </div>
+
+                {% if dark_mode %}
+                    <b style="color: white;">Description:</b>
+                {% else %}
+                    <b class="tm-text-primary">Description:</b>
+                {% endif %}
+
+                <div class="form-group">
+                    {{ form_url.description }}
+                </div>
+                
+                <div class="form-group mb-0">
+                    <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-submit"><span>Add</span></button>
+                </div>
+            </form>    
+        </div>
+    </div>  
+</div>        

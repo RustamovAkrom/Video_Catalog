@@ -15,36 +15,23 @@
 
 {% block content %}
 <main> 
-    <div class="container-fluid px-0">
+    <div class="container-fluid mx-auto">
         
-        <div class="mx-auto tm-content-container mt-4 px-3 mb-3">
-
-            <div class="row">
-                <div class="col-12">
-                    <h2 class="tm-page-title mb-5 tm-text-primary">{{ user_profile.first_name }} {{ user_profile.last_name }}</h2>    
-                </div>                        
-            </div>
-
+        <div class="mx-auto">
             <div class="row">
                 <div class="col-lg-6 mb-5 pt-3">
                     <div class="media tm-testimonial">
-                        <a href="{{ user_profile.avatar.url }}">
-                            <img class="mr-4 rounded-circle img-fluid" src="{{ user_profile.avatar.url }}" alt="{{ user_profile.avatar.url }}">
-                        </a>
                         <p class="media-body pt-3 tm-testimonial-text">
-                            {% if user_profile.bio %}
-                                {{ user_profile.bio }}
-                            {% else %}
-                                it is your bio...
-                            {% endif %}
+                            <!-- ? -->
                         </p>     
                     </div>              
                 </div>
             </div>
         </div>
-        {% include 'includes/profile_page_form.html' %}                       			                   
+        {% include 'includes/profile_page_form.html' %}  
+        <div>
 
-        <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="{% static 'img/contact-2.jpg' %}"></div>
+        <div class="parallax-window parallax-window-2" data-parallax="scroll" data-image-src="{% static 'img/profile-1.jpg' %}"></div>
 
     </div>
 </main>

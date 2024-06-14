@@ -140,12 +140,12 @@ MEDIA_ROOT = BASE_DIR / "media/"
 
 time_now = datetime.datetime.now()
 
-# 7:00 to 18:00 white bode and 18:00 to 7:00 dark_mode
+# 7:00 to 18:00 white mode and 18:00 to 7:00 dark mode
 if (time_now.time().hour > 18) or (time_now.time().hour < 7):
     DARK_MODE = True
 else:
     DARK_MODE = False
-# DARK_MODE = True
+# DARK_MODE = False
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

@@ -40,9 +40,10 @@
 					{% include 'includes/video_detail_share_box.html' %}
 				</div>
 			</div>
+
 			<div class="row pt-4 pb-5">
 				<div class="col-12">
-					<h2 class="mb-5 tm-text-primary">Related Videos for You</h2>
+					<h2 class="mb-5 tm-text-primary"><b>Related Videos for You</b></h2>
 					<div class="row tm-catalog-item-list">
 						{% for video_r in related_videos %}
 							<div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
@@ -51,14 +52,43 @@
 									<a href="{% url 'videos:video-detail' video_r.video_id %}" class="position-absolute tm-img-overlay">
 										<i class="fas fa-play tm-overlay-icon"></i>
 									</a>
-								</div>    
-								<div class="p-3 tm-catalog-item-description">
-									<h3 class="tm-text-gray text-center tm-catalog-item-title">{{ video.title }}</h3>		                                
+								</div>   
+
+								{% if dark_mode %}
+									<div class="p-4 tm-bg-gray tm-catalog-item-description" style="background-color: rgb(10, 10, 10)">
+								{% else %}
+									<div class="p-4 tm-bg-gray tm-catalog-item-description">
+								{% endif %}
+
+								<div class="mb-3 col-md-6">
+									<a href="{% url 'users:author-profile' video.author.user.user_id %}">
+										<img src="{{ video.author.avatar.url }}" alt="" width="35" height="35" style="border-radius: 50%;">
+										<span>{{ video.author.username }}</span>
+									</a>
+								</div>
+								
+								<h3 class="tm-text-primary mb-3 tm-catalog-item-title">{{ video.title }}</h3>
+								<p class="tm-catalog-item-text">{{ video.description }}</p>
+								<div>
+									{{ video.created_at.date }}
+									<span class="ml-5">
+										<span class="ml-5">
+											<span class="ml-5">
+												{{ video.created_at.time }}
+											</span>
+										</span>
+									</span>
 								</div>
 							</div>
+						</div>
 						{% empty %}
-							<div align="center"><p><h1><b>Related Videos Not Found</b></h1></p></div>
+						<div class="container mt-5 mb-5">
+							<center>
+								<img src="{% static 'img/tenor.gif' %}" alt="" width="250" height="350">
+								<h1 class="mt-5"><b>Videolar topilmadi !</b></h1>
+							</center>
 						{% endfor %}
+						</div>
 					</div>
 				</div>
 			</div>

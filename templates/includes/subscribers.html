@@ -6,9 +6,10 @@
         <div class="tm-bg-gray p-5 h-100">
     {% endif %}
 
-        <h3 class="tm-text-primary mb-3">Do you want to get our latest updates?</h3>
-        <p class="mb-5">Please subscribe our newsletter for upcoming new videos and latest information about our
-            work. Thank you.</p>
+        <h3 class="tm-text-primary mb-3">Eng sara va yangi videolar haqida habar beramiz.</h3>
+        <p class="mb-5">Agar siz bizning saytimizda chiqayotkan yangi videolar haqida doyimi habardor bolishni istasangiz iltimos email manzilizni kiriting biz sizni habarlar yuborip turamiz, Katta rahmat
+
+        </p>
         <form action="" method="GET" class="tm-subscribe-form">
 
             {% if dark_mode %}
@@ -31,11 +32,11 @@
 
         <h3 class="tm-text-primary mb-4">Quick Links</h3>
         <ul class="list-unstyled tm-footer-links">
-            <li><a href="#">Duis bibendum</a></li>
-            <li><a href="#">Purus non dignissim</a></li>
-            <li><a href="#">Sapien metus gravida</a></li>
+            <li><a href="#">Telegram Channel</a></li>
+            <li><a href="#">Blog Post</a></li>
+            <!-- <li><a href="#">Sapien metus gravida</a></li>
             <li><a href="#">Eget consequat</a></li>
-            <li><a href="#">Praesent eu pulvinar</a></li>
+            <li><a href="#">Praesent eu pulvinar</a></li> -->
         </ul>    
     </div>                        
 </div>
@@ -49,11 +50,11 @@
 
         <h3 class="tm-text-primary mb-4">Our Pages</h3>
         <ul class="list-unstyled tm-footer-links">
-            <li><a href="#">Our Videos</a></li>
-            <li><a href="#">License Terms</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Privacy Policies</a></li>
+            <li><a href="{% url 'videos:home' %}">Our Videos</a></li>
+            <!-- <li><a href="#">License Terms</a></li> -->
+            <li><a href="{% url 'videos:about' %}">About Us</a></li>
+            <li><a href="{% url 'videos:contact' %}">Contact</a></li>
+            <!-- <li><a href="#">Privacy Policies</a></li> -->
         </ul>
     </div>                        
 </div>

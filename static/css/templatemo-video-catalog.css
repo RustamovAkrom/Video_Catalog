@@ -229,7 +229,7 @@ h2, p { color: #666666; }
     justify-content: center;
     background-color: rgba(0,0,0,0.4);
     cursor: pointer;
-    transition: all 0.3s ease: ;
+    transition: all 0.3s
 }
 
 .tm-overlay-icon {
@@ -354,6 +354,8 @@ h2, p { color: #666666; }
 .tm-fixed-header-1 { background-image: url(../img/video-detail-1.jpg); }
 .tm-fixed-header-2 { background-image: url(../img/about-1.jpg); }
 .tm-fixed-header-3 { background-image: url(../img/contact-1.jpg); }
+.tm-fixed-header-4 { background-image: url(../img/logout-1.jpg);}
+.tm-fixed-header-5 { background-image: url(../img/profile-1.jpg);}
 
 video {
   width: 100%;

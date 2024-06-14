@@ -2,7 +2,12 @@
 
 {% if dark_mode %}
 <div class="tm-bg-gray tm-share-box" style="background-color: rgb(10, 10, 10);">
-    <h6 class="tm-share-box-title mb-4">Share this video</h6>
+    {% if dark_mode %}
+        <h6 class="tm-text-primary mb-4">Share this video</h6>
+    {% else %}
+        <h6 class="tm-share-box-title mb-4">Share this video</h6>
+    {% endif %}
+
     <div class="mb-5 d-flex">
         <a href="" class="tm-bg-black tm-share-button"><i class="fab fa-facebook"></i></a>
         <a href="" class="tm-bg-black tm-share-button"><i class="fab fa-twitter"></i></a>
@@ -10,8 +15,12 @@
         <a href="" class="tm-bg-black tm-share-button"><i class="far fa-envelope"></i></a>
     </div>
 
-    <p class="mb-4">Author: <a href="#" class="tm-text-link">{{ video.author.user.username }}</a></p>
-
+    <p class="mb-4">
+        <a href="{% url 'users:author-profile' video.author.user.user_id %}" class="tm-text-link">
+        <img src="{{ video.author.avatar.url }}" alt="avatar" width="30" height="30" style="border-radius: 50%;">
+        {{ video.author.user.username }}</a>
+    </p>
+    
     <form action="{% url 'videos:video-like' video.video_id %}" method="get">
         <button type="submit" class="tm-bg-white px-5 mb-4 d-inline-block tm-text-primary tm-likes-box tm-liked">
             {% if request.user.is_authenticated %}

@@ -44,6 +44,7 @@
             
             <div class="row tm-catalog-item-list">
                 {% for video in videos %}
+                    
                     <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
                         <div class="position-relative tm-thumbnail-container">
                             <img src="{{ video.photo.url }}" alt="Image" class="img-fluid tm-catalog-item-img">    
@@ -51,23 +52,43 @@
                                 <i class="fas fa-play tm-overlay-icon"></i>
                             </a>
                         </div>   
-
+                        
                         {% if dark_mode %}
                             <div class="p-4 tm-bg-gray tm-catalog-item-description" style="background-color: rgb(10, 10, 10)">
                         {% else %}
                             <div class="p-4 tm-bg-gray tm-catalog-item-description">
                         {% endif %}
 
+                            <div class="mb-3 col-md-6">
+                                <a href="{% url 'users:author-profile' video.author.user.user_id %}">
+                                    <img src="{{ video.author.avatar.url }}" alt="" width="35" height="35" style="border-radius: 50%;">
+                                    <span>{{ video.author.username }}</span>
+                                </a>
+                            </div>
+                            
                             <h3 class="tm-text-primary mb-3 tm-catalog-item-title">{{ video.title }}</h3>
                             <p class="tm-catalog-item-text">{{ video.description }}</p>
+                            <div>
+                                {{ video.created_at.date }}
+                                <span class="ml-5">
+                                    <span class="ml-5">
+                                        <span class="ml-5">
+                                            {{ video.created_at.time }}
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
                         </div>
-                    </div>
+                        </div>
                 {% empty %}
                     <div class="container mt-5 mb-5">
-                        <h1><b><b>Videos Not Found</b></b></h1>
+                        <center>
+                            <img src="{% static 'img/tenor.gif' %}" alt="" width="250" height="350">
+                            <h1 class="mt-5"><b>Videolar mavjud emas !</b></h1>
+                        </center>
                     </div>
                 {% endfor %}
-
+                    </div>
             <!-- Catalog Paging Buttons -->
             {% include 'includes/paginator.html' %}
         </main>
