@@ -1,5 +1,7 @@
 __pycache__/
 .idea/
+env/
+env_bash/
 media/
 video_catalog/
 .env
