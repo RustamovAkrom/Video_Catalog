@@ -91,10 +91,10 @@ DATABASES = {
     }
 }
 AUTH_USER_MODEL = "users.User"
-DEFAULT_AUTH_USER_AVATAR_NAME = "avatar.jpg"
-DEFAULT_AUTH_USER_AVATAR_DIR = "users/avatar/default/"
+DEFAULT_AUTH_USER_AVATAR_NAME = "avatar.jpg" # file name
+DEFAULT_AUTH_USER_AVATAR_DIR = "users/avatar/default/" # in /media/
 READING_AVATAR_DIR = "default_images/user.png"  # add image in dir name == user.png
-mkdir_media_defaul_avatar()
+mkdir_media_defaul_avatar() # creating default avatar in 'DEFAULT_AUTH_USER_AVATAR_DIR'
 
 
 # Password validation
@@ -145,7 +145,7 @@ if (time_now.time().hour > 18) or (time_now.time().hour < 7):
     DARK_MODE = True
 else:
     DARK_MODE = False
-# DARK_MODE = False
+DARK_MODE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

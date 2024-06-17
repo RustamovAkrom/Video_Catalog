@@ -12,3 +12,5 @@ def subscriber_email_service(request, email, redirect_url: str):
         except:
             messages.error(request, "You`r email already token")
             return redirect(redirect_url)
+
+

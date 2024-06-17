@@ -61,7 +61,7 @@
 								{% endif %}
 
 								<div class="mb-3 col-md-6">
-									<a href="{% url 'users:author-profile' video.author.user.user_id %}">
+									<a href="{% url 'users:author-profile' video.author.user_id %}">
 										<img src="{{ video.author.avatar.url }}" alt="" width="35" height="35" style="border-radius: 50%;">
 										<span>{{ video.author.username }}</span>
 									</a>

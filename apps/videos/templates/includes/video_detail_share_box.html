@@ -16,9 +16,9 @@
     </div>
 
     <p class="mb-4">
-        <a href="{% url 'users:author-profile' video.author.user.user_id %}" class="tm-text-link">
-        <img src="{{ video.author.avatar.url }}" alt="avatar" width="30" height="30" style="border-radius: 50%;">
-        {{ video.author.user.username }}</a>
+        <a href="{% url 'users:author-profile' video.author.user_id %}" class="tm-text-link">
+        <img src="{{ video.author.user_profile.avatar.url }}" alt="avatar" width="30" height="30" style="border-radius: 50%;">
+        {{ video.author.username }}</a>
     </p>
     
     <form action="{% url 'videos:video-like' video.video_id %}" method="get">
@@ -60,8 +60,12 @@
             <a href="" class="tm-bg-white tm-share-button"><i class="far fa-envelope"></i></a>
         </div>
 
-        <p class="mb-4">Author: <a href="#" class="tm-text-link">{{ video.author.user.username }}</a></p>
-
+        <p class="mb-4">
+            <a href="{% url 'users:author-profile' video.author.user_id %}" class="tm-text-link">
+            <img src="{{ video.author.user_profile.avatar.url }}" alt="avatar" width="30" height="30" style="border-radius: 50%;">
+            {{ video.author.username }}</a>
+        </p>
+        
         <form action="{% url 'videos:video-like' video.video_id %}" method="get">
             <button type="submit" class="tm-bg-white px-5 mb-4 d-inline-block tm-text-primary tm-likes-box tm-liked">
                 {% if request.user.is_authenticated %}

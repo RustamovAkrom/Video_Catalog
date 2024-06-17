@@ -1,0 +1,52 @@
+<div class="mx-auto pb-3 tm-about-text-container px-3">
+    <div class="row">
+        <div class="col-lg-6 mb-5">
+
+            <form id="contact-form" action="" method="POST" class="tm-contact-form" enctype="multipart/form-data">
+                {% csrf_token %}
+        
+                <div class="form-group">
+                    <b class="tm-text-primary">Title:</b>
+                    {{ form.title }}
+                </div>
+
+                <div class="form-group">
+                    <b class="tm-text-primary">Photo:</b>
+                    {{ form.photo }}
+                </div>
+
+                <div class="form-group">
+                    <b class="tm-text-primary">Video:</b>
+                    {{ form.video }}
+                </div>
+                <div class="form-group">
+                    <b class="tm-text-primary">Description:</b>
+                    {{ form.description }}
+                </div>
+                <div class="form-group">
+                    <b class="tm-text-primary">Content:</b>
+                    {{ form.content }}
+                </div>
+                <div class="form-group">
+                    <b class="tm-text-primary">Category:</b>
+                    {{ form.category }}
+                </div>
+                
+              <div class="form-group mb-0">
+                <button type="submit" class="btn btn-primary rounded-0 d-block ml-auto mr-0 tm-btn-animate tm-btn-submit tm-icon-submit"><span>Submit</span></button>
+              </div>
+            </form>    
+            
+        </div>
+        <div class="col-lg-6">
+            <div class="mapouter mb-60">
+                <div class="gmap_canvas">
+                    <iframe width="100%" height="520" id="gmap_canvas"
+                        src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>  
+</div>        
+       

@@ -13,5 +13,6 @@ class BaseSharedView(View):
         self.context = {}
         # Web Dark Mode activator
         self.context["dark_mode"] = settings.DARK_MODE
-        
+        self.context['telegram_channel'] = "https://t.me/python_django_01"
+        self.context['blog_post'] = "#"
         super().__init__(**kwargs)

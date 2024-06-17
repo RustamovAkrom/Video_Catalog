@@ -53,6 +53,9 @@
                                             </li>
                                             {% if request.user.is_authenticated %}
                                                 <li class="nav-item">
+                                                    <a class="nav-link tm-nav-link" href="{% url 'videos:video-create' %}" style="color: cornflowerblue;">AddVideo</a>
+                                                </li>
+                                                <li class="nav-item">
                                                     <a class="nav-link tm-nav-link" href="{% url 'users:profile' request.user.user_id %}" style="color: cornflowerblue;">{{ request.user.username }}</a>
                                                 </li>
                                                 <li class="nav-item">

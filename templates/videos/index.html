@@ -47,7 +47,9 @@
                     
                     <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
                         <div class="position-relative tm-thumbnail-container">
+                            {% if video.photo.url %}
                             <img src="{{ video.photo.url }}" alt="Image" class="img-fluid tm-catalog-item-img">    
+                            {% endif %}
                             <a href="{% url 'videos:video-detail' video.video_id %}" class="position-absolute tm-img-overlay">
                                 <i class="fas fa-play tm-overlay-icon"></i>
                             </a>
@@ -60,8 +62,8 @@
                         {% endif %}
 
                             <div class="mb-3 col-md-6">
-                                <a href="{% url 'users:author-profile' video.author.user.user_id %}">
-                                    <img src="{{ video.author.avatar.url }}" alt="" width="35" height="35" style="border-radius: 50%;">
+                                <a href="{% url 'users:author-profile' video.author.user_id %}">
+                                    <img src="{{ video.author.user_profile.avatar.url }}" alt="" width="35" height="35" style="border-radius: 50%;">
                                     <span>{{ video.author.username }}</span>
                                 </a>
                             </div>

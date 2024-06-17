@@ -248,6 +248,18 @@ class UserProfileForm(forms.ModelForm):
                 }
             )
         )
+        username = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "username",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Username...",
+                    "required": "",
+                    "style": "background-color: rgb(10, 10, 10);",
+                }
+            )
+        )
         email = forms.EmailField(
             widget=forms.EmailInput(
                 attrs={
@@ -300,6 +312,17 @@ class UserProfileForm(forms.ModelForm):
                     "required": "",
                 }
             )
+        ),
+        username = forms.CharField(
+            widget=forms.TextInput(
+                attrs={
+                    "type": "text",
+                    "name": "username",
+                    "class": "form-control rounded-0",
+                    "placeholder": "Username...",
+                    "required": ""
+                }
+            )
         )
         email = forms.EmailField(
             widget=forms.EmailInput(
@@ -321,7 +344,7 @@ class UserProfileForm(forms.ModelForm):
 
     class Meta:
         model = UserProfile
-        fields = ["bio", "first_name", "last_name", "email", "avatar"]
+        fields = ["bio", "first_name", "username", "last_name", "email", "avatar"]
 
 
 # class UserUrlForm(forms.Form):

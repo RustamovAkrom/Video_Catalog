@@ -17,11 +17,12 @@ class UserSignUpView(BaseSharedView):
     # Registration
     def get(self, request):
 
-        # html parse get
-        subscriber_email = request.GET.get("email", None)
-
         # subscribers
-        subscriber_email_service(request, subscriber_email, "users:sign_up")
+        subscriber_email_service(
+            request,
+            request.GET.get("email", None),
+            "users:sign_up"
+        )
 
         self.context["form"] = UserSignUpForm()
 
@@ -64,11 +65,12 @@ class UserSignInView(BaseSharedView):
     # Authorization
     def get(self, request):
 
-        # html parse get
-        subscriber_email = request.GET.get("email", None)
-
         # subscribers
-        subscriber_email_service(request, subscriber_email, "users:sign_up")
+        subscriber_email_service(
+            request,
+            request.GET.get("email", None),
+            "users:sign_up"
+        )
 
         form = UserSignInForm()
         self.context["form"] = form
@@ -96,16 +98,16 @@ class UserSignInView(BaseSharedView):
             return redirect("users:sing_in")
 
 
-class UserLogOutView(BaseSharedView):
+class UserLogOutView(LoginRequiredMixin, BaseSharedView):
     # Logout
     def get(self, request):
 
-        # html parse get
-        subscriber_email = request.GET.get("email", None)
-
         # subscribers
-        subscriber_email_service(request, subscriber_email, "users:sign_up")
-
+        subscriber_email_service(
+            request,
+            request.GET.get("email", None),
+            "users:log_out"),
+    
         return render(request, "users/log_out.html", self.context)
 
     def post(self, request):
@@ -117,15 +119,13 @@ class UserProfileView(LoginRequiredMixin, BaseSharedView):
     # User Profile page
     def get(self, request, user_id):
 
-        # html parse get
-        subscriber_email = request.GET.get("email", None)
-
         # subscribers
         subscriber_email_service(
             request,
-            subscriber_email,
+            request.GET.get("email", None),
             reverse("users:profile", kwargs={"user_id": user_id}),
         )
+        
         user = User.objects.get(user_id = user_id)
         user_profile = UserProfile.objects.get(user = user)
         form = UserProfileForm(instance=user)
@@ -173,14 +173,11 @@ class AuthorProfileView(BaseSharedView):
 
     def get(self, request, author_id):
 
-        # html parse get
-        subscriber_email = request.GET.get("email", None)
-
         # subscribers
         subscriber_email_service(
             request,
-            subscriber_email,
-            reverse("users:author-profile", kwargs={"author_id": author_id}),
+            request.GET.get("email", None),
+            reverse("users:author-profile", kwargs={"author_id": author_id})
         )
 
         user = User.objects.get(user_id=author_id)

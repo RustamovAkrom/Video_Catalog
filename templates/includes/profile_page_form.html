@@ -6,19 +6,9 @@
                 {% csrf_token %}
 
                 {% if dark_mode %}
-                    <b style="color: white;">Bio:</b>
+                <b style="color: white;">First Name:</b>
                 {% else %}
-                    <b class="tm-text-primary">Bio:</b>
-                {% endif %}
-
-                <div class="form-group">
-                    {{ form.bio }}
-                </div>
-
-                {% if dark_mode %}
-                    <b style="color: white;">First Name:</b>
-                {% else %}
-                    <b class="tm-text-primary">First Name:</b>
+                <b class="tm-text-primary">First Name:</b>
                 {% endif %}
 
                 <div class="form-group">
@@ -36,13 +26,33 @@
                 </div>
 
                 {% if dark_mode %}
-                    <b style="color: white;">Email:</b>
+                    <b style="color: white;">Username:</b>
                 {% else %}
-                    <b class="tm-text-primary">Email:</b>
+                    <b class="tm-text-primary">Username:</b>
                 {% endif %}
 
                 <div class="form-group">
+                    {{ form.username }}
+                </div>
+                
+                {% if dark_mode %}
+                <b style="color: white;">Email:</b>
+                {% else %}
+                <b class="tm-text-primary">Email:</b>
+                {% endif %}
+                
+                <div class="form-group">
                     {{ form.email }}
+                </div>
+
+                {% if dark_mode %}
+                    <b style="color: white;">Bio:</b>
+                {% else %}
+                    <b class="tm-text-primary">Bio:</b>
+                {% endif %}
+
+                <div class="form-group">
+                    {{ form.bio }}
                 </div>
                 
                 {% if dark_mode %}
