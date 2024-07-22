@@ -145,7 +145,7 @@ if (time_now.time().hour > 18) or (time_now.time().hour < 7):
     DARK_MODE = True
 else:
     DARK_MODE = False
-DARK_MODE = True
+# DARK_MODE = True
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

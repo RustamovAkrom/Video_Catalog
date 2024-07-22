@@ -1,4 +1,3 @@
-from typing import Iterable
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from apps.shared.models import AbstractBaseModel
@@ -16,10 +15,9 @@ class User(AbstractUser):
     
 
 class UserProfile(AbstractBaseModel):
-    user = models.OneToOneField(User, models.CASCADE, related_name="user_profile")
+    user = models.ForeignKey(User, models.CASCADE, related_name="user_profile")
     first_name = models.CharField(max_length=150)      
     last_name = models.CharField(max_length=150)  
-    username = models.CharField(max_length=150)
     email = models.EmailField()
     bio = models.CharField(max_length=100, blank=True, null=True)
     avatar = models.ImageField(
@@ -31,3 +29,5 @@ class UserProfile(AbstractBaseModel):
 
     def __str__(self) -> str:
         return self.user.username
+
+

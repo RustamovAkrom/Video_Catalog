@@ -39,7 +39,7 @@ class UserSignUpView(BaseSharedView):
 
             if password1 == password2:
                 user = authenticate(username=username, password=password2)
-
+                    
                 if user is not None:
                     login(request, user)
 
@@ -145,7 +145,30 @@ class UserProfileView(LoginRequiredMixin, BaseSharedView):
         )
 
         if form.is_valid():
-            form.save()
+            first_name = form.data.get("first_name")
+            last_name = form.data.get("last_name")
+            email = form.data.get("email")
+            bio = form.data.get("bio")
+            avatar = form.files.get("avatar")
+
+            if avatar is not None:
+                user_profile.avatar = avatar.open('r')
+                user_profile.save()
+
+            else:
+                UserProfile.objects.update(
+                    first_name = first_name,
+                    last_name = last_name,
+                    email = email,
+                    bio = bio,
+                )
+
+            User.objects.update(
+                first_name = user_profile.first_name,
+                last_name = user_profile.last_name,
+                email = user_profile.email,
+            )
+           
             messages.success(request, "You successfully updated Profile")
             return redirect(reverse("users:profile", kwargs={"user_id": user_id}))
 

@@ -12,18 +12,11 @@ from .models import User, UserProfile
 #             user=instance,
 #             first_name=instance.first_name,
 #             last_name=instance.last_name,
-#             username=instance.username,
+
+#             username = instance.username,
 #             email=instance.email
 #         )
-#     else:
-#         UserProfile.objects.update(
-#             user=instance,
-#             first_name=instance.first_name,
-#             last_name=instance.last_name,
-#             username=instance.username,
-#             email=instance.email
-#         )
-        
+
 
 # @receiver(post_save, sender=UserProfile)
 # def remove_from_invertory_user_profile(sender, instance, created, **kwargs):
